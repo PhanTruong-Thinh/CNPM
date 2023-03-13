@@ -42,4 +42,12 @@
         android:name="com.example.budget.ui.thongke.ThongKeFragment"
         android:label="fragment_thong_ke"
         tools:layout="@layout/fragment_thong_ke" />
+    <fragment
+        android:id="@+id/nac_thoat"
+        android:name="com.example.budget.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/nav_thoat"
+        android:name="com.example.budget.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home" />
 </navigation>
