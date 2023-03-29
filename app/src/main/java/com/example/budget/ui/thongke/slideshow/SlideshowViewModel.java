@@ -1,4 +1,4 @@
-package com.example.budget.ui.slideshow;
+package com.example.budget.ui.thongke.slideshow;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

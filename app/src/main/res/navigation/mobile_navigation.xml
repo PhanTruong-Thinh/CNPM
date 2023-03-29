@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.budget.ui.slideshow.SlideshowFragment"
+        android:name="com.example.budget.ui.thongke.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
@@ -44,6 +44,10 @@
         tools:layout="@layout/fragment_thong_ke" />
     <fragment
         android:id="@+id/nac_thoat"
+        android:name="com.example.budget.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/nav_thoat"
         android:name="com.example.budget.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home" />
     <fragment

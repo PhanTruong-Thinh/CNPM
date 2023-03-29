@@ -1,4 +1,4 @@
-package com.example.budget.ui.slideshow;
+package com.example.budget.ui.thongke.slideshow;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
