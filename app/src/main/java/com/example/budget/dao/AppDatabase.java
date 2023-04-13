@@ -16,9 +16,9 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract LoaiThuDao loaiThuDao();
 
     public static AppDatabase INSTANCE;
-    private  static RoomDatabase.Callback callback = new Callback() {
+    private static RoomDatabase.Callback callback = new Callback() {
         @Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
 
             new PopulateData(INSTANCE).execute();
@@ -44,8 +44,8 @@ public abstract class AppDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            String[] loaithus = new String[]{"Luong", "Thuong", "Co phieu"};
-            for (String it : loaithus) {
+            String[] loaiThus = new String[]{"Luong", "Thuong", "Co phieu"};
+            for (String it : loaiThus) {
                 LoaiThu lt = new LoaiThu();
                 lt.ten = it;
                 loaiThuDao.insert(lt);
