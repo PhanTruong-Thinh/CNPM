@@ -26,14 +26,31 @@ public class LoaiThuRepository {
     }
     //. 1
     public void insert(LoaiThu loaiThu) {
-        new InsertAsynTask(mLoaiThuDao).execute(loaiThu);
+        new InsertAsyncTask(mLoaiThuDao).execute(loaiThu);
     }
-     // dinh nghia lop thuc hien bat dong bo
-    // thuc hien phuong thuc insert loaithu vao csdl
-    class InsertAsynTask extends AsyncTask<LoaiThu, Void, Void> {
+    public void delete(LoaiThu loaiThu) {
+        new DeleteAsynTcask(mLoaiThuDao).execute(loaiThu);
+    }
+    public void update(LoaiThu loaiThu) {
+        new UpdateAsyncTask(mLoaiThuDao).execute(loaiThu);
+    }
+
+    class UpdateAsyncTask extends AsyncTask<LoaiThu, Void, Void> {
+        private LoaiThuDao mLoaiThuDao;
+        public UpdateAsyncTask(LoaiThuDao loaiThuDao) {
+            this.mLoaiThuDao = loaiThuDao;
+        }
+
+        @Override
+        protected Void doInBackground(LoaiThu... loaiThus) {
+            mLoaiThuDao.update(loaiThus[0]);
+            return null;
+        }
+    }
+    class InsertAsyncTask extends AsyncTask<LoaiThu, Void, Void> {
         private LoaiThuDao mLoaiThuDao;
         // .2
-        public InsertAsynTask(LoaiThuDao loaiThuDao) {
+        public InsertAsyncTask(LoaiThuDao loaiThuDao) {
             this.mLoaiThuDao = loaiThuDao;
         }
 
@@ -45,4 +62,20 @@ public class LoaiThuRepository {
         }
     }
 
+    class DeleteAsynTcask extends AsyncTask<LoaiThu, Void, Void> {
+        private LoaiThuDao mLoaiThuDao;
+        // .2
+        public DeleteAsynTcask(LoaiThuDao loaiThuDao) {
+            this.mLoaiThuDao = loaiThuDao;
+        }
+
+        // .3
+        @Override
+        protected Void doInBackground(LoaiThu... loaiThus) {
+            mLoaiThuDao.delete(loaiThus[0]);
+            return null;
+        }
+    }
+
 }
+

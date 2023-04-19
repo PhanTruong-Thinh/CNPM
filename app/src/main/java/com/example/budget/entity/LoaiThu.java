@@ -12,4 +12,5 @@ public class LoaiThu {
     public String ten;
 
 
+
 }
