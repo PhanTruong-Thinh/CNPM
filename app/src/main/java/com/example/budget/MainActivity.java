@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.budget.dialog.LoaiChiDialog;
 import com.example.budget.dialog.LoaiThuDialog;
+import com.example.budget.ui.chi.LoaiChiFragment;
 import com.example.budget.ui.thu.LoaiThuFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -45,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = fragments.get(fragments.size()-1);
                 if(fragment instanceof LoaiThuFragment){
                     LoaiThuDialog dialog = new LoaiThuDialog(currentContext, (LoaiThuFragment) fragment);
+                    dialog.show();
+                }
+                if(fragment instanceof LoaiChiFragment){
+                    LoaiChiDialog dialog = new LoaiChiDialog(currentContext, (LoaiChiFragment) fragment);
                     dialog.show();
                 }
             }

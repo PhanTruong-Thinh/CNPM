@@ -9,11 +9,13 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.budget.entity.LoaiChi;
 import com.example.budget.entity.LoaiThu;
 
-@Database(entities = {LoaiThu.class}, version = 1)
+@Database(entities = {LoaiThu.class, LoaiChi.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract LoaiThuDao loaiThuDao();
+    public abstract LoaiChiDao loaiChiDao();
 
     public static AppDatabase INSTANCE;
     private static RoomDatabase.Callback callback = new Callback() {
@@ -37,9 +39,11 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static class PopulateData extends AsyncTask<Void, Void, Void> {
         private LoaiThuDao loaiThuDao;
+        private LoaiChiDao loaiChiDao;
 
         public PopulateData(AppDatabase db) {
             loaiThuDao = db.loaiThuDao();
+            loaiChiDao = db.loaiChiDao();
         }
 
         @Override
@@ -49,6 +53,12 @@ public abstract class AppDatabase extends RoomDatabase {
                 LoaiThu lt = new LoaiThu();
                 lt.ten = it;
                 loaiThuDao.insert(lt);
+            }
+            String[] loaiChis = new String[]{"Luong", "Thuong", "Co phieu"};
+            for (String it : loaiChis) {
+                LoaiChi lc = new LoaiChi();
+                lc.ten = it;
+                loaiChiDao.insert(lc);
             }
             return null;
         }
