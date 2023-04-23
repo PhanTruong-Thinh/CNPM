@@ -24,24 +24,36 @@ public class LoaiChiDialog {
     private TextInputEditText etId, etName;
     private boolean mEditMode;
 
-    public LoaiChiDialog(Context context, LoaiChiFragment fragment) {
+    public LoaiChiDialog(Context context, LoaiChiFragment fragment, LoaiChi ...loaiChi) {
         mViewModel = fragment.getViewModel();
         mLayoutInflater = LayoutInflater.from(context);
         View view = mLayoutInflater.inflate(R.layout.dialog_loai_chi, null);
         etId = view.findViewById(R.id.etId);
         etName = view.findViewById(R.id.etName);
-        AlertDialog.Builder builder = new AlertDialog.Builder(context).setView(view).setNegativeButton("Dong", new DialogInterface.OnClickListener() {
+        if(loaiChi != null && loaiChi.length>0) {
+            etId.setText(""+loaiChi[0].lid);
+            etName.setText(loaiChi[0].ten);
+            mEditMode = true;
+        }else {
+            mEditMode = false;
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(context).setView(view).setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mDialog.dismiss();
             }
-        }).setPositiveButton("Luu", new DialogInterface.OnClickListener() {
+        }).setPositiveButton("Lưu", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 LoaiChi lc = new LoaiChi();
                 lc.ten = etName.getText().toString();
-                mViewModel.insert(lc);
-                Toast.makeText(context, "Loai chi duoc luu", Toast.LENGTH_SHORT).show();
+                if(mEditMode) {
+                    lc.lid = Integer.parseInt(etId.getText().toString());
+                    mViewModel.update(lc);
+                }else {
+                    mViewModel.insert(lc);
+                    Toast.makeText(context, "Loại chi được lưu", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         mDialog = builder.create();

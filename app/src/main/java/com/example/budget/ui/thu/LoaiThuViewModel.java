@@ -31,4 +31,10 @@ public class LoaiThuViewModel extends AndroidViewModel {
     public  void insert(LoaiThu loaiThu) {
         mLoaiThuRepository.insert(loaiThu);
     }
+    public void delete(LoaiThu loaiThu) {
+        mLoaiThuRepository.delete(loaiThu);
+    }
+    public void update(LoaiThu loaiThu) {
+        mLoaiThuRepository.update(loaiThu);
+    }
 }

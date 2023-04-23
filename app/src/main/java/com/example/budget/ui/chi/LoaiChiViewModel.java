@@ -16,7 +16,7 @@ import java.util.List;
 
 public class LoaiChiViewModel extends AndroidViewModel {
     private LoaiChiRepository mLoaiChiRepository;
-    private LiveData<List<LoaiChi>>  mAllLoaiChi;
+    private LiveData<List<LoaiChi>> mAllLoaiChi;
 
     public LoaiChiViewModel(@NonNull Application application) {
         super(application);
@@ -25,12 +25,22 @@ public class LoaiChiViewModel extends AndroidViewModel {
         // dung doi tuong de thuc hien phuong thuc getAllLoaiThu
         mAllLoaiChi = mLoaiChiRepository.getAllLoaiChi();
     }
+
     // tra ve danh sach loai thu
     public LiveData<List<LoaiChi>> getAllLoaiChi() {
         return mAllLoaiChi;
     }
+
     // chen loai thu moi vao csdl
-    public  void insert(LoaiChi loaiChi) {
+    public void insert(LoaiChi loaiChi) {
         mLoaiChiRepository.insert(loaiChi);
+    }
+
+    public void delete(LoaiChi loaiChi) {
+        mLoaiChiRepository.delete(loaiChi);
+    }
+
+    public void update(LoaiChi loaiChi) {
+        mLoaiChiRepository.update(loaiChi);
     }
 }
