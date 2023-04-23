@@ -22,7 +22,6 @@ public class LoaiThuRecylerviewAdapter extends RecyclerView.Adapter<LoaiThuRecyl
     private List<LoaiThu> mList;
 
     public static ItemClickListener itemEditClickListener;
-    public static ItemClickListener itemViewClickListener;
 
     public LoaiThuRecylerviewAdapter(Context context) {
         mlayoutInflater = LayoutInflater.from(context);
@@ -32,9 +31,7 @@ public class LoaiThuRecylerviewAdapter extends RecyclerView.Adapter<LoaiThuRecyl
         LoaiThuRecylerviewAdapter.itemEditClickListener = itemEditClickListener;
     }
 
-    public static void setOnItemViewClickListener(ItemClickListener itemViewClickListener) {
-        LoaiThuRecylerviewAdapter.itemViewClickListener = itemViewClickListener;
-    }
+
 
     @NonNull
     // tao view tu layout recylerview_loai_thu_item
@@ -46,7 +43,7 @@ public class LoaiThuRecylerviewAdapter extends RecyclerView.Adapter<LoaiThuRecyl
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LoaiThuViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LoaiThuViewHolder holder, @SuppressLint("RecyclerView") int position) {
         if(mList != null) {
             holder.tvName.setText(mList.get(position).ten);
             holder.position = position;
@@ -75,23 +72,15 @@ public class LoaiThuRecylerviewAdapter extends RecyclerView.Adapter<LoaiThuRecyl
 
     public static class LoaiThuViewHolder extends RecyclerView.ViewHolder {
         public TextView tvName;
-        public ImageView ivEdit, ivView;
+        public ImageView ivEdit;
         public CardView cv;
         public int position;
         public LoaiThuViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
-            ivView = itemView.findViewById(R.id.ivView);
             ivEdit = itemView.findViewById(R.id.ivEdit);
             cv = (CardView) itemView;
-            ivView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(itemViewClickListener != null) {
-                        itemViewClickListener.onItemClick(position);
-                    }
-                }
-            });
+
             ivEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

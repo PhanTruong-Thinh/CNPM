@@ -21,10 +21,8 @@ import com.example.budget.R;
 import com.example.budget.adapter.ItemClickListener;
 import com.example.budget.adapter.LoaiChiRecylerviewAdapter;
 import com.example.budget.dialog.LoaiChiDialog;
-import com.example.budget.dialog.LoaiThuDialog;
 import com.example.budget.entity.LoaiChi;
-import com.example.budget.entity.LoaiThu;
-import com.example.budget.ui.thu.LoaiThuFragment;
+
 
 
 import java.util.List;
@@ -66,7 +64,6 @@ public class LoaiChiFragment extends Fragment {
                 dialog.show();
             }
         });
-
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT
         ) {

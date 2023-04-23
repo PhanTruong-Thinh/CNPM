@@ -23,7 +23,7 @@ public class LoaiChiRecylerviewAdapter extends RecyclerView.Adapter<LoaiChiRecyl
     private List<LoaiChi> mList;
 
     public static ItemClickListener itemEditClickListener;
-    public static ItemClickListener itemViewClickListener;
+
 
     public LoaiChiRecylerviewAdapter(Context context) {
         mlayoutInflater = LayoutInflater.from(context);
@@ -33,9 +33,6 @@ public class LoaiChiRecylerviewAdapter extends RecyclerView.Adapter<LoaiChiRecyl
         LoaiChiRecylerviewAdapter.itemEditClickListener = itemClickListener;
     }
 
-    public void setOnItemViewClickListener(ItemClickListener itemViewListener) {
-        LoaiChiRecylerviewAdapter.itemViewClickListener = itemViewListener;
-    }
 
     @NonNull
     // tao view tu layout recylerview_loai_chi_item
@@ -76,23 +73,14 @@ public class LoaiChiRecylerviewAdapter extends RecyclerView.Adapter<LoaiChiRecyl
 
     public static class LoaiChiViewHolder extends RecyclerView.ViewHolder {
         public TextView tvName;
-        public ImageView ivEdit, ivView;
+        public ImageView ivEdit;
         public CardView cv;
         public int position;
         public LoaiChiViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
-            ivView = itemView.findViewById(R.id.ivView);
             ivEdit = itemView.findViewById(R.id.ivEdit);
             cv = (CardView) itemView;
-            ivView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(itemViewClickListener != null) {
-                        itemViewClickListener.onItemClick(position);
-                    }
-                }
-            });
             ivEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
