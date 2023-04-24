@@ -2,6 +2,7 @@ package com.example.budget.dao;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -9,13 +10,17 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.budget.entity.Chi;
 import com.example.budget.entity.LoaiChi;
 import com.example.budget.entity.LoaiThu;
+import com.example.budget.entity.Thu;
 
-@Database(entities = {LoaiThu.class, LoaiChi.class}, version = 2)
+@Database(entities = {LoaiThu.class, LoaiChi.class, Thu.class, Chi.class}, version = 4)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract LoaiThuDao loaiThuDao();
     public abstract LoaiChiDao loaiChiDao();
+    public abstract ThuDao thuDao();
+    public abstract ChiDao chiDao();
 
     public static AppDatabase INSTANCE;
     private static RoomDatabase.Callback callback = new Callback() {
@@ -37,13 +42,18 @@ public abstract class AppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
+
     public static class PopulateData extends AsyncTask<Void, Void, Void> {
         private LoaiThuDao loaiThuDao;
         private LoaiChiDao loaiChiDao;
+        private ThuDao thuDao;
+        private ChiDao chiDao;
 
         public PopulateData(AppDatabase db) {
             loaiThuDao = db.loaiThuDao();
             loaiChiDao = db.loaiChiDao();
+            thuDao = db.thuDao();
+            chiDao = db.chiDao();
         }
 
         @Override
@@ -60,6 +70,34 @@ public abstract class AppDatabase extends RoomDatabase {
                 lc.ten = it;
                 loaiChiDao.insert(lc);
             }
+            Thu thu = new Thu();
+            thu.ten = "Lương tháng 1";
+            thu.sotien = 12000000;
+            thu.ltid = 1;
+            thu.ghichu = "Tiền lương công ty A";
+            thuDao.insert(thu);
+
+//            Thu thu2 = new Thu();
+//            thu2.ten = "Lương tháng 2";
+//            thu2.sotien = 11500000;
+//            thu2.ltid = 2;
+//            thu2.ghichu = "Tiền lương công ty A, đi trễ -500k";
+//            thuDao.insert(thu2);
+
+            Chi chi = new Chi();
+            chi.ten = "Tiền Nhà";
+            chi.sotien = 5000000;
+            chi.lcid = 1;
+            chi.ghichu = "Tiền Thuê Nhà";
+            chiDao.insert(chi);
+
+//            chi.ten = "Tiền Nước";
+//            chi.sotien = 750000;
+//            chi.lcid = 2;
+//            chi.ghichu = "Tiền Nước";
+//            chiDao.insert(chi);
+
+            Log.d("BudgetPro: ", "insert data");
             return null;
         }
     }
