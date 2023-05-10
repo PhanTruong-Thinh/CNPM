@@ -8,14 +8,18 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 
+import com.example.budget.entity.LoaiThu;
 import com.example.budget.entity.Thu;
+import com.example.budget.repository.LoaiThuRepository;
 import com.example.budget.repository.ThuRepository;
 
 import java.util.List;
 
 public class KhoanThuViewModel extends AndroidViewModel {
     private ThuRepository mThuRepository;
+    private LoaiThuRepository mLoaiThuRepository;
     private LiveData<List<Thu>> mAllThu;
+    private LiveData<List<LoaiThu>> mAllLoaiThu;
 
     public KhoanThuViewModel(@NonNull Application application) {
         super(application);
@@ -23,7 +27,15 @@ public class KhoanThuViewModel extends AndroidViewModel {
         mThuRepository = new ThuRepository(application);
         // dung doi tuong de thuc hien phuong thuc getAllThu
         mAllThu = mThuRepository.getAllThu();
+
+        mLoaiThuRepository = new LoaiThuRepository(application);
+        mAllLoaiThu = mLoaiThuRepository.getAllLoaiThu();
     }
+
+    public LiveData<List<LoaiThu>> getAllLoaiThu() {
+        return mAllLoaiThu;
+    }
+
     // tra ve danh sach loai thu
     public LiveData<List<Thu>> getAllThu() {
         return mAllThu;
