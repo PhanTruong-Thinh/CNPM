@@ -30,7 +30,9 @@ public class KhoanChiFragment extends Fragment {
     public static KhoanChiFragment newInstance() {
         return new KhoanChiFragment();
     }
-
+    public KhoanChiViewModel getViewModel() {
+        return mViewModel;
+    }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

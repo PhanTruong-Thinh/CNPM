@@ -9,11 +9,8 @@ import android.widget.Toast;
 
 import com.example.budget.R;
 import com.example.budget.entity.LoaiChi;
-import com.example.budget.entity.LoaiThu;
 import com.example.budget.ui.chi.LoaiChiFragment;
 import com.example.budget.ui.chi.LoaiChiViewModel;
-import com.example.budget.ui.thu.LoaiThuFragment;
-import com.example.budget.ui.thu.LoaiThuViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoaiChiDialog {
@@ -29,7 +26,7 @@ public class LoaiChiDialog {
         mLayoutInflater = LayoutInflater.from(context);
         View view = mLayoutInflater.inflate(R.layout.dialog_loai_chi, null);
         etId = view.findViewById(R.id.etId);
-        etName = view.findViewById(R.id.etName);
+        etName = view.findViewById(R.id.etAmount);
         if(loaiChi != null && loaiChi.length>0) {
             etId.setText(""+loaiChi[0].lid);
             etName.setText(loaiChi[0].ten);

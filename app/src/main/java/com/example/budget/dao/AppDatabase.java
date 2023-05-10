@@ -31,7 +31,7 @@ public abstract class AppDatabase extends RoomDatabase {
             new PopulateData(INSTANCE).execute();
         }
     };
-
+// Tạo cơ sở dữ liệu nếu chưa có bằng Room
     public static AppDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
@@ -48,7 +48,10 @@ public abstract class AppDatabase extends RoomDatabase {
         private LoaiChiDao loaiChiDao;
         private ThuDao thuDao;
         private ChiDao chiDao;
-
+// 4.4 trả về danh sách các loại khoản thu
+        //6.3
+        //9.3
+        //10.3
         public PopulateData(AppDatabase db) {
             loaiThuDao = db.loaiThuDao();
             loaiChiDao = db.loaiChiDao();
@@ -77,12 +80,6 @@ public abstract class AppDatabase extends RoomDatabase {
             thu.ghichu = "Tiền lương công ty A";
             thuDao.insert(thu);
 
-//            Thu thu2 = new Thu();
-//            thu2.ten = "Lương tháng 2";
-//            thu2.sotien = 11500000;
-//            thu2.ltid = 2;
-//            thu2.ghichu = "Tiền lương công ty A, đi trễ -500k";
-//            thuDao.insert(thu2);
 
             Chi chi = new Chi();
             chi.ten = "Tiền Nhà";
@@ -91,11 +88,6 @@ public abstract class AppDatabase extends RoomDatabase {
             chi.ghichu = "Tiền Thuê Nhà";
             chiDao.insert(chi);
 
-//            chi.ten = "Tiền Nước";
-//            chi.sotien = 750000;
-//            chi.lcid = 2;
-//            chi.ghichu = "Tiền Nước";
-//            chiDao.insert(chi);
 
             Log.d("BudgetPro: ", "insert data");
             return null;

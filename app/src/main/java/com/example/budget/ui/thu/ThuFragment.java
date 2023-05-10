@@ -67,6 +67,7 @@ public class ThuFragment extends Fragment {
     }
 
     @Override
+    // 3,3 hien thi thu fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
