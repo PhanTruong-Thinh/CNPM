@@ -4,9 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.budget.dialog.ChiDialog;
 import com.example.budget.dialog.LoaiChiDialog;
 import com.example.budget.dialog.LoaiThuDialog;
+import com.example.budget.dialog.ThuDialog;
+import com.example.budget.entity.Thu;
+import com.example.budget.ui.chi.KhoanChiFragment;
 import com.example.budget.ui.chi.LoaiChiFragment;
+import com.example.budget.ui.thu.KhoanThuFragment;
 import com.example.budget.ui.thu.LoaiThuFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -30,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-
+// 1 mở ứng dung
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,17 +45,26 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.appBarMain.toolbar);
         final  MainActivity currentContext = this;
+        // 2 Hiển thị menu
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
+            // 3. Chon vào khoản thu
             public void onClick(View view) {
+                // Dùng getSupportFragmentManager để gọi đến ThuFragment
                 List<Fragment> fragments = getSupportFragmentManager().getFragments();
                 Fragment fragment = fragments.get(fragments.size()-1);
                 if(fragment instanceof LoaiThuFragment){
                     LoaiThuDialog dialog = new LoaiThuDialog(currentContext, (LoaiThuFragment) fragment);
                     dialog.show();
+                }else if (fragment instanceof KhoanThuFragment) {
+                    ThuDialog dialog = new ThuDialog(currentContext, (KhoanThuFragment) fragment);
+                    dialog.show();
                 }
                 if(fragment instanceof LoaiChiFragment){
                     LoaiChiDialog dialog = new LoaiChiDialog(currentContext, (LoaiChiFragment) fragment);
+                    dialog.show();
+                }else if (fragment instanceof KhoanChiFragment) {
+                    ChiDialog dialog = new ChiDialog(currentContext, (KhoanChiFragment) fragment);
                     dialog.show();
                 }
             }

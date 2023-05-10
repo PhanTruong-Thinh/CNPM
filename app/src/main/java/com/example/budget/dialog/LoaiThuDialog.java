@@ -26,7 +26,7 @@ public class LoaiThuDialog {
         mLayoutInflater = LayoutInflater.from(context);
         View view = mLayoutInflater.inflate(R.layout.dialog_loai_thu, null);
         etId = view.findViewById(R.id.etId);
-        etName = view.findViewById(R.id.etName);
+        etName = view.findViewById(R.id.etAmount);
         if(loaiThu != null && loaiThu.length>0) {
             etId.setText(""+loaiThu[0].lid);
             etName.setText(loaiThu[0].ten);
@@ -46,15 +46,20 @@ public class LoaiThuDialog {
                 lt.ten = etName.getText().toString();
                 if(mEditMode) {
                     lt.lid = Integer.parseInt(etId.getText().toString());
+                    // 9.1 gọi tới update
                     mViewModel.update(lt);
                 }else {
+                    // 6.1 gọi tới insert
                     mViewModel.insert(lt);
+                    // 7. hiện thị thông báo luu
                     Toast.makeText(context, "Loại thu được lưu", Toast.LENGTH_SHORT).show();
                 }
             }
         });
         mDialog = builder.create();
     }
+    // 5.2 Hiển thị hộp thoại người dùng nhập thông tin
+    // 8.2
     public void show() {
         mDialog.show();
     }

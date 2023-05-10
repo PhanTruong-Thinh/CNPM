@@ -31,6 +31,10 @@ public class KhoanThuFragment extends Fragment {
         return new KhoanThuFragment();
     }
 
+    public KhoanThuViewModel getViewModel() {
+        return mViewModel;
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

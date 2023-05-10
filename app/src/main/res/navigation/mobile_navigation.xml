@@ -50,8 +50,5 @@
         android:id="@+id/nav_thoat"
         android:name="com.example.budget.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/nav_thoat"
-        android:name="com.example.budget.ui.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+
 </navigation>
