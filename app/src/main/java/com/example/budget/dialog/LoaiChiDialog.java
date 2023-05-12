@@ -26,7 +26,7 @@ public class LoaiChiDialog {
         mLayoutInflater = LayoutInflater.from(context);
         View view = mLayoutInflater.inflate(R.layout.dialog_loai_chi, null);
         etId = view.findViewById(R.id.etId);
-        etName = view.findViewById(R.id.etAmount);
+        etName = view.findViewById(R.id.etName);
         if(loaiChi != null && loaiChi.length>0) {
             etId.setText(""+loaiChi[0].lid);
             etName.setText(loaiChi[0].ten);

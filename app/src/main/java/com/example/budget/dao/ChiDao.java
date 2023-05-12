@@ -16,6 +16,9 @@ public interface ChiDao {
     @Query("SELECT * FROM chi")
     LiveData<List<Chi>> findAll();
 
+    @Query("SELECT sum(sotien) FROM chi")
+    LiveData<Float> sumTongChi();
+
     @Insert
     void insert(Chi chi);
 

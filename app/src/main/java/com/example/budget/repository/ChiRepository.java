@@ -26,6 +26,10 @@ public class ChiRepository {
         return mAllChi;
     }
 
+    public LiveData<Float> sumTongChi() {
+        return mChiDao.sumTongChi();
+    }
+
     //. 1
     public void insert(Chi chi) {
         new InsertAsyncTask(mChiDao).execute(chi);
