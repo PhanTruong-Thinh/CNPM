@@ -1,5 +1,6 @@
 package com.example.budget.dialog;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,12 +22,13 @@ public class LoaiThuDialog {
     private TextInputEditText etId, etName;
     private boolean mEditMode;
 
+
     public LoaiThuDialog(Context context, LoaiThuFragment fragment, LoaiThu ...loaiThu) {
         mViewModel = fragment.getViewModel();
         mLayoutInflater = LayoutInflater.from(context);
         View view = mLayoutInflater.inflate(R.layout.dialog_loai_thu, null);
         etId = view.findViewById(R.id.etId);
-        etName = view.findViewById(R.id.etAmount);
+        etName = view.findViewById(R.id.etName);
         if(loaiThu != null && loaiThu.length>0) {
             etId.setText(""+loaiThu[0].lid);
             etName.setText(loaiThu[0].ten);
