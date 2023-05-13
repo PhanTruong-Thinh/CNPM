@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.budget.dao.AppDatabase;
 import com.example.budget.dao.ThuDao;
+import com.example.budget.entity.ThongKeLoaiThu;
 import com.example.budget.entity.Thu;
 
 import java.util.List;
@@ -84,5 +85,8 @@ public class ThuRepository {
         }
     }
 
+    public LiveData<List<ThongKeLoaiThu>> sumByLoaiThu() {
+        return mThuDao.sumByLoaiThu();
+    }
 }
 
