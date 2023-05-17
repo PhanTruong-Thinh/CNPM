@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import com.example.budget.dao.AppDatabase;
 import com.example.budget.dao.ChiDao;
 import com.example.budget.entity.Chi;
+import com.example.budget.entity.ThongKeLoaiChi;
 
 import java.util.List;
 
@@ -81,6 +82,10 @@ public class ChiRepository {
             mChiDao.delete(chis[0]);
             return null;
         }
+    }
+
+    public LiveData<List<ThongKeLoaiChi>> sumByLoaiChi() {
+        return mChiDao.sumByLoaiChi();
     }
 
 }

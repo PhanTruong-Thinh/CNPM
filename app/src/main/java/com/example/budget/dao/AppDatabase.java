@@ -75,7 +75,7 @@ public abstract class AppDatabase extends RoomDatabase {
             }
             Thu thu = new Thu();
             thu.ten = "Lương tháng 1";
-            thu.sotien = 12000000;
+            thu.sotien = 7800000;
             thu.ltid = 1;
             thu.ghichu = "Tiền lương công ty A";
             thuDao.insert(thu);

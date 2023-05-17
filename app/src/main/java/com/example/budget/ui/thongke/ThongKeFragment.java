@@ -14,7 +14,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.budget.R;
+import com.example.budget.adapter.ThongKeLoaiChiRecyclerViewAdapter;
 import com.example.budget.adapter.ThongKeLoaiThuRecyclerViewAdapter;
+import com.example.budget.entity.ThongKeLoaiChi;
 import com.example.budget.entity.ThongKeLoaiThu;
 
 import java.util.List;
@@ -25,6 +27,9 @@ public class ThongKeFragment extends Fragment {
     private EditText mEtTongChi;
     private RecyclerView rvThongKeLoaiThu;
     private ThongKeLoaiThuRecyclerViewAdapter mThongKeLoaiThuAdapter; // hien thi
+
+    private RecyclerView rvThongKeLoaiChi;
+    private ThongKeLoaiChiRecyclerViewAdapter mThongKeLoaiChiAdapter; // hien thi
 
     public ThongKeFragment() {
 
@@ -73,6 +78,17 @@ public class ThongKeFragment extends Fragment {
             @Override
             public void onChanged(List<ThongKeLoaiThu> thongKeLoaiThus) {
                 mThongKeLoaiThuAdapter.setList(thongKeLoaiThus);
+            }
+        });
+
+        rvThongKeLoaiChi = view.findViewById(R.id.rvThongKeLoaiChi);
+        mThongKeLoaiChiAdapter = new ThongKeLoaiChiRecyclerViewAdapter(getActivity());
+        rvThongKeLoaiChi.setLayoutManager(new LinearLayoutManager(getActivity())); // thiet lap layout
+        rvThongKeLoaiChi.setAdapter(mThongKeLoaiChiAdapter); // thiet lap adapter
+        mThongKeViewModel.getmThongKeLoaiChi().observe(getActivity(), new Observer<List<ThongKeLoaiChi>>() {
+            @Override
+            public void onChanged(List<ThongKeLoaiChi> thongKeLoaiChis) {
+                mThongKeLoaiChiAdapter.setList(thongKeLoaiChis);
             }
         });
 
