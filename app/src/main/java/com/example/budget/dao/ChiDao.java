@@ -8,6 +8,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.budget.entity.Chi;
+import com.example.budget.entity.ThongKeLoaiChi;
 
 import java.util.List;
 
@@ -18,6 +19,11 @@ public interface ChiDao {
 
     @Query("SELECT sum(sotien) FROM chi")
     LiveData<Float> sumTongChi();
+
+    // Danh sach Loai chi theo tong tien loai chi
+    @Query("SELECT b.lid, b.ten, sum(a.sotien) as tong FROM chi a INNER JOIN loaichi b on a.lcid = b.lid"
+            + " GROUP BY b.lid, b.ten")
+    LiveData<List<ThongKeLoaiChi>> sumByLoaiChi();
 
     @Insert
     void insert(Chi chi);

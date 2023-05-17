@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.budget.entity.ThongKeLoaiChi;
 import com.example.budget.entity.ThongKeLoaiThu;
 import com.example.budget.repository.ChiRepository;
 import com.example.budget.repository.ThuRepository;
@@ -18,15 +19,16 @@ public class ThongKeViewModel extends AndroidViewModel {
     private ChiRepository mChiRepository;
     private LiveData<Float> mTongChi;
     private LiveData<List<ThongKeLoaiThu>> mThongKeLoaiThus; // dinh nghia List thong ke loai thu
-
+    private LiveData<List<ThongKeLoaiChi>> mThongKeLoaiChis; // dinh nghia List thong ke loai chi
     public ThongKeViewModel(@NonNull Application application) {
         super(application);
 
         mThuRepository = new ThuRepository(application);
         mTongThu = mThuRepository.sumTongThu();
+        mThongKeLoaiThus = mThuRepository.sumByLoaiThu(); // lay thong tin tu csdl
         mChiRepository = new ChiRepository(application);
         mTongChi = mChiRepository.sumTongChi();
-        mThongKeLoaiThus = mThuRepository.sumByLoaiThu(); // lay thong tin tu csdl
+        mThongKeLoaiChis = mChiRepository.sumByLoaiChi(); // lay thong tin tu csdl
     }
 
     public LiveData<Float> getTongThu() {
@@ -39,5 +41,8 @@ public class ThongKeViewModel extends AndroidViewModel {
 
     public LiveData<List<ThongKeLoaiThu>> getmThongKeLoaiThu() {
         return mThongKeLoaiThus;
+    }
+    public LiveData<List<ThongKeLoaiChi>> getmThongKeLoaiChi() {
+        return mThongKeLoaiChis;
     }
 }
