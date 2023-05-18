@@ -67,7 +67,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 lt.ten = it;
                 loaiThuDao.insert(lt);
             }
-            String[] loaiChis = new String[]{"Luong", "Thuong", "Co phieu"};
+            String[] loaiChis = new String[]{"Luong", "Tien Nha", "Co phieu"};
             for (String it : loaiChis) {
                 LoaiChi lc = new LoaiChi();
                 lc.ten = it;
