@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:gravity="center"
-            android:text="Loai Thu"
+            android:text="Loai Chi"
             android:textSize="20dp" />
     </LinearLayout>
 
