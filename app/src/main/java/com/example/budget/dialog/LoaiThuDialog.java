@@ -36,11 +36,13 @@ public class LoaiThuDialog {
         }else {
             mEditMode = false;
         }
+
         AlertDialog.Builder builder = new AlertDialog.Builder(context).setView(view).setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mDialog.dismiss();
             }
+            // 6.
         }).setPositiveButton("Lưu", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

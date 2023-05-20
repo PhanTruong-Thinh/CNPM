@@ -45,6 +45,7 @@ public class KhoanThuFragment extends Fragment {
     }
 
     @Override
+    // 3.3 hien thi khoan thu
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_khoan_thu, container, false);
@@ -56,8 +57,8 @@ public class KhoanThuFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(KhoanThuViewModel.class);
         mViewModel.getAllThu().observe(getActivity(), new Observer<List<Thu>>() {
             @Override
-            public void onChanged(List<Thu> thus) {
-                mAdapter.setList(thus);
+            public void onChanged(List<Thu> thuses) {
+                mAdapter.setList(thuses);
             }
         });
     }

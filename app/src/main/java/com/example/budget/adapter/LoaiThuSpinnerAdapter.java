@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.example.budget.R;
 import com.example.budget.entity.LoaiThu;
-import com.example.budget.entity.Thu;
 
 import java.util.List;
 

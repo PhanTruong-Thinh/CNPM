@@ -15,14 +15,14 @@ public class ThuViewPager2Adapter extends FragmentStateAdapter {
 
     @NonNull
     @Override
+    // 3.1
     public Fragment createFragment(int position) {
         Fragment fragment;
-        // 3.1 Gọi đến LoaiThuFragment
         if (position == 0) {
             // 3.2 chuyển đến khoan thu
             fragment = KhoanThuFragment.newInstance();
         }else {
-            // 4. Chọn Loại Khoản Thu
+            // 4.1
             fragment = LoaiThuFragment.newInstance();
         }
         return fragment;

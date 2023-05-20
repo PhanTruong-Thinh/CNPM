@@ -12,8 +12,8 @@ import androidx.lifecycle.Observer;
 
 import com.example.budget.R;
 import com.example.budget.adapter.LoaiThuSpinnerAdapter;
-import com.example.budget.entity.LoaiThu;
 import com.example.budget.entity.Thu;
+import com.example.budget.entity.LoaiThu;
 import com.example.budget.ui.thu.KhoanThuFragment;
 
 import com.example.budget.ui.thu.KhoanThuViewModel;
@@ -32,7 +32,7 @@ public class ThuDialog {
 
     private LoaiThuSpinnerAdapter mAdapter;
 
-    public ThuDialog(Context context, KhoanThuFragment fragment, Thu ...thu) {
+    public ThuDialog(Context context, KhoanThuFragment fragment, Thu... thu) {
         mViewModel = fragment.getViewModel();
         mLayoutInflater = LayoutInflater.from(context);
         View view = mLayoutInflater.inflate(R.layout.dialog_thu, null);
@@ -50,9 +50,9 @@ public class ThuDialog {
         });
         spType.setAdapter(mAdapter);
         if(thu != null && thu.length>0) {
-            etId.setText(""+thu[0].tid);
+            etId.setText(""+ thu[0].tid);
             etName.setText(thu[0].ten);
-            etAmount.setText(""+thu[0].sotien);
+            etAmount.setText(""+ thu[0].sotien);
             etNote.setText(thu[0].ghichu);
             mEditMode = true;
         }else {

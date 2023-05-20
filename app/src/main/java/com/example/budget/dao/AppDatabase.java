@@ -11,9 +11,9 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.budget.entity.Chi;
+import com.example.budget.entity.Thu;
 import com.example.budget.entity.LoaiChi;
 import com.example.budget.entity.LoaiThu;
-import com.example.budget.entity.Thu;
 
 @Database(entities = {LoaiThu.class, LoaiChi.class, Thu.class, Chi.class}, version = 4)
 public abstract class AppDatabase extends RoomDatabase {
@@ -48,10 +48,10 @@ public abstract class AppDatabase extends RoomDatabase {
         private LoaiChiDao loaiChiDao;
         private ThuDao thuDao;
         private ChiDao chiDao;
-// 4.4 trả về danh sách các loại khoản thu
-        //6.3
-        //9.3
-        //10.3
+
+        //6.4
+        //9.4
+        //10.4
         public PopulateData(AppDatabase db) {
             loaiThuDao = db.loaiThuDao();
             loaiChiDao = db.loaiChiDao();

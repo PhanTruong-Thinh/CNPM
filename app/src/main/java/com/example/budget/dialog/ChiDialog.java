@@ -12,8 +12,8 @@ import androidx.lifecycle.Observer;
 
 import com.example.budget.R;
 import com.example.budget.adapter.LoaiChiSpinnerAdapter;
-import com.example.budget.entity.LoaiChi;
 import com.example.budget.entity.Chi;
+import com.example.budget.entity.LoaiChi;
 import com.example.budget.ui.chi.KhoanChiFragment;
 
 import com.example.budget.ui.chi.KhoanChiViewModel;
@@ -32,7 +32,7 @@ public class ChiDialog {
 
     private LoaiChiSpinnerAdapter mAdapter;
 
-    public ChiDialog(Context context, KhoanChiFragment fragment, Chi ...chi) {
+    public ChiDialog(Context context, KhoanChiFragment fragment, Chi... chi) {
         mViewModel = fragment.getViewModel();
         mLayoutInflater = LayoutInflater.from(context);
         View view = mLayoutInflater.inflate(R.layout.dialog_chi, null);
@@ -50,9 +50,9 @@ public class ChiDialog {
         });
         spType.setAdapter(mAdapter);
         if(chi != null && chi.length>0) {
-            etId.setText(""+chi[0].tid);
+            etId.setText(""+ chi[0].tid);
             etName.setText(chi[0].ten);
-            etAmount.setText(""+chi[0].sotien);
+            etAmount.setText(""+ chi[0].sotien);
             etNote.setText(chi[0].ghichu);
             mEditMode = true;
         }else {

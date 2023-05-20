@@ -21,10 +21,13 @@ public class LoaiThuRepository {
         mAllLoaiThu = mLoaiThuDao.findAll();
     }
     // dinh nghia getter danh sach cac loai thu
+    // 4.4 lay danh sach loai khoan thu
     public LiveData<List<LoaiThu>> getAllLoaiThu() {
         return mAllLoaiThu;
     }
-    //. 1
+    // 6.2
+    // 9.2
+    // 10.2
     public void insert(LoaiThu loaiThu) {
         new InsertAsyncTask(mLoaiThuDao).execute(loaiThu);
     }
@@ -35,6 +38,7 @@ public class LoaiThuRepository {
         new UpdateAsyncTask(mLoaiThuDao).execute(loaiThu);
     }
 
+    // 9.3
     class UpdateAsyncTask extends AsyncTask<LoaiThu, Void, Void> {
         private LoaiThuDao mLoaiThuDao;
         public UpdateAsyncTask(LoaiThuDao loaiThuDao) {
@@ -47,6 +51,7 @@ public class LoaiThuRepository {
             return null;
         }
     }
+    // 6.3
     class InsertAsyncTask extends AsyncTask<LoaiThu, Void, Void> {
         private LoaiThuDao mLoaiThuDao;
         // .2
@@ -62,6 +67,7 @@ public class LoaiThuRepository {
         }
     }
 
+    // 10.3
     class DeleteAsynTcask extends AsyncTask<LoaiThu, Void, Void> {
         private LoaiThuDao mLoaiThuDao;
         // .2
