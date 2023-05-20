@@ -8,12 +8,10 @@ import com.example.budget.dialog.ChiDialog;
 import com.example.budget.dialog.LoaiChiDialog;
 import com.example.budget.dialog.LoaiThuDialog;
 import com.example.budget.dialog.ThuDialog;
-import com.example.budget.entity.Thu;
 import com.example.budget.ui.chi.KhoanChiFragment;
 import com.example.budget.ui.chi.LoaiChiFragment;
 import com.example.budget.ui.thu.KhoanThuFragment;
 import com.example.budget.ui.thu.LoaiThuFragment;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -45,15 +43,15 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.appBarMain.toolbar);
         final  MainActivity currentContext = this;
-        // 2 Hiển thị menu
+
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            // 3. Chon vào khoản thu
             public void onClick(View view) {
                 // Dùng getSupportFragmentManager để gọi đến ThuFragment
                 List<Fragment> fragments = getSupportFragmentManager().getFragments();
                 Fragment fragment = fragments.get(fragments.size()-1);
                 if(fragment instanceof LoaiThuFragment){
+                    // 5.1
                     LoaiThuDialog dialog = new LoaiThuDialog(currentContext, (LoaiThuFragment) fragment);
                     dialog.show();
                 }else if (fragment instanceof KhoanThuFragment) {
@@ -84,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
+    // 2. Mo thanh menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -103,7 +101,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        // 2.1 Hiển thị menu
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+
     }
+
 }

@@ -5,11 +5,10 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
 
-import com.example.budget.entity.LoaiChi;
 import com.example.budget.entity.Chi;
+import com.example.budget.entity.LoaiChi;
 import com.example.budget.repository.LoaiChiRepository;
 import com.example.budget.repository.ChiRepository;
 

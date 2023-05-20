@@ -7,8 +7,8 @@ import androidx.lifecycle.LiveData;
 
 import com.example.budget.dao.AppDatabase;
 import com.example.budget.dao.ThuDao;
-import com.example.budget.entity.ThongKeLoaiThu;
 import com.example.budget.entity.Thu;
+import com.example.budget.entity.ThongKeLoaiThu;
 
 import java.util.List;
 
@@ -51,8 +51,8 @@ public class ThuRepository {
             this.mThuDao = thuDao;
         }
         @Override
-        protected Void doInBackground(Thu... thus) {
-            mThuDao.update(thus[0]);
+        protected Void doInBackground(Thu... thuses) {
+            mThuDao.update(thuses[0]);
             return null;
         }
     }
@@ -65,8 +65,8 @@ public class ThuRepository {
         }
         // .3
         @Override
-        protected Void doInBackground(Thu... thus) {
-            mThuDao.insert(thus[0]);
+        protected Void doInBackground(Thu... thuses) {
+            mThuDao.insert(thuses[0]);
             return null;
         }
     }
@@ -79,8 +79,8 @@ public class ThuRepository {
         }
         // .3
         @Override
-        protected Void doInBackground(Thu... thus) {
-            mThuDao.delete(thus[0]);
+        protected Void doInBackground(Thu... thuses) {
+            mThuDao.delete(thuses[0]);
             return null;
         }
     }

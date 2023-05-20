@@ -35,16 +35,15 @@ public class LoaiThuFragment extends Fragment {
         return new LoaiThuFragment();
     }
 
-    // 4.1 Yêu cầu hiển thị Loại khoản thu
 
     public LoaiThuViewModel getViewModel() {
         return mViewModel;
     }
 
     // 4.6 Hiển thị loại khoản thu
-    // 6.5
-    // 9.5
-    // 10.5
+    // 6.6
+    // 9.6
+    // 10.6
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -61,8 +60,8 @@ public class LoaiThuFragment extends Fragment {
         mRv.setAdapter(mAdapter);
         LoaiThuFragment currentFragment = this;
         mAdapter.setOnItemEditClickListener(new ItemClickListener() {
-            // 5.1 Yêu cầu hiển thị hộp thoại người dùng
-            // 8.1
+            // 5.3
+            // 8.3
             @Override
             public void onItemClick(int position) {
                 LoaiThu loaiThu = mAdapter.getItem(position);
@@ -91,13 +90,13 @@ public class LoaiThuFragment extends Fragment {
         });
         helper.attachToRecyclerView(mRv);
     }
-// 4.2 lấy danh sách các loại khoản thu
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(LoaiThuViewModel.class);
         // khi du lieu co thay doi, cap nhat adapter
-        // 4,3 truy vấn dữ liệu
+        // 4.2 truy vấn dữ liệu
         mViewModel.getAllLoaiThu().observe(getActivity(), new Observer<List<LoaiThu>>() {
             @Override
             public void onChanged(List<LoaiThu> loaiThus) {

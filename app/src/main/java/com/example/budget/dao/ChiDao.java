@@ -14,14 +14,14 @@ import java.util.List;
 
 @Dao
 public interface ChiDao {
-    @Query("SELECT * FROM chi")
+    @Query("SELECT * FROM Chi")
     LiveData<List<Chi>> findAll();
 
-    @Query("SELECT sum(sotien) FROM chi")
+    @Query("SELECT sum(sotien) FROM Chi")
     LiveData<Float> sumTongChi();
 
     // Danh sach Loai chi theo tong tien loai chi
-    @Query("SELECT b.lid, b.ten, sum(a.sotien) as tong FROM chi a INNER JOIN loaichi b on a.lcid = b.lid"
+    @Query("SELECT b.lid, b.ten, sum(a.sotien) as tong FROM Chi a INNER JOIN loaichi b on a.lcid = b.lid"
             + " GROUP BY b.lid, b.ten")
     LiveData<List<ThongKeLoaiChi>> sumByLoaiChi();
 
